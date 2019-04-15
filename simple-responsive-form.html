@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      padding: 4rem 15%;
+      font-size: 1.6rem;
+    }
+
+    form  p {
+      color: #999;
+    }
+
+    form > header > * {
+      margin-bottom: 1.5rem;
+    }
+
+    form > div {
+      clear: both;
+      overflow: hidden;
+      margin: 0 0 1rem 0;
+    }
+
+    form > div > label,
+    legend {
+      float: left;
+      width: 25%;
+      padding-right: 1rem;
+    }
+
+    form > div > div,
+    form > div > fieldset > div {
+      float: right;
+      width: 75%;
+    }
+
+    fieldset {
+      border: 0;
+    }
+
+
+    input[type=text],
+    input[type=email],
+    textarea {
+      font-size: 1.6rem;
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+
+    input[type=text],
+    input[type=email] {
+      width: 50%;
+      line-height: 1.6rem;
+    }
+
+    textarea {
+      width: 100%;
+      height: 8rem;
+    }
+
+
+    input[type=text]:focus,
+    input[type=email]:focus,
+    textarea:focus {
+      outline: 0;
+      border-color: pink;
+    }
+
+    form > div >  div > select{
+      font-size: 1.6rem;
+    }
+
+    input[type=submit] {
+      padding: 0.1rem 0.4rem;
+      font-size: 1.6rem;
+    }
+
+    @media (min-width: 1200px) {
+      form > div > label,
+      legend {
+        text-align: right;
+      }
+    }
+
+    @media (max-width: 600px) {
+      form > div > label,
+      legend {
+        float: none;
+        width: 100%;
+      }
+
+      form > div > div,
+      form > div > fieldset > div {
+        float: none;
+      }
+
+    }
+  </style>
+</head>
+<body>
+
+  <form action="#" method="POST">
+
+    <header>
+      <h2>Example Responsive Form</h2>
+      <p>This form breaks at 600px and goes from a left-label form to a top-label form. At above 1200px, the labels align right.</p>
+    </header>
+
+    <div>
+      <label for="fullName">Full Name</label>
+
+      <div>
+        <input id="fullName" name="fullName" type="text">
+      </div>
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+
+      <div>
+        <input id="email" name="email" type="email">
+      </div>
+    </div>
+
+    <div>
+      <label for="message">Message</label>
+
+      <div>
+        <textarea id="message" name="message"></textarea>
+      </div>
+    </div>
+
+    <div>
+      <fieldset>
+        <legend>Select a Choice</legend>
+
+        <div>
+          <div>
+            <input type="radio" id="single_1" name="singleChoice">
+            <label for="single_1">First Choice</label>
+          </div>
+  
+          <div>
+            <input type="radio" id="single_2" name="singleChoice">
+            <label for="single_2">Second Choice</label>
+          </div>
+  
+          <div>
+            <input type="radio" id="single_3" name="singleChoice">
+            <label for="single_3">Third Choice</label>
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+
+    <div>
+      <fieldset>
+        <legend>Check All That Apply</legend>
+
+        <div>
+          <div>
+            <input type="checkbox" id="multiple_1" name="multiple_1">
+            <label for="multiple_1">First Choice</label>
+          </div>
+  
+          <div>
+            <input type="checkbox" id="multiple_2" name="multiple_2">
+            <label for="multiple_2">Second Choice</label>
+          </div>
+  
+          <div>
+            <input type="checkbox" id="multiple_3" name="multiple_3">
+            <label for="multiple_3">Third Choice</label>
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+
+    <div>
+      <label for="selectlist_1">Select a Choice</label>
+
+      <div>
+        <select id="selectlist_1">
+          <option value="">--Please choose an option--</option>
+          <option value="First Choice">First Choice</option>
+          <option value="Second Choice">Second Choice</option>
+          <option value="Third Choice">Third Choice</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <input type="submit" value="submit">
+      </div>
+    </div>
+  
+  </form>
+
+  
+
+
+</body>
+</html>
