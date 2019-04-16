@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <link href="./normalize.css" rel="stylesheet"> -->
   <title>Document</title>
   <style>
     * {
@@ -14,10 +15,12 @@
 
     html {
       font-size: 62.5%;
+      line-height: 1.15;
+      font-family: Helvetica, Arial, sans-serif;
     }
 
     body {
-      padding: 4rem 15%;
+      padding: 2rem 15%;
       font-size: 1.6rem;
     }
 
@@ -54,8 +57,10 @@
 
 
     input[type=text],
-    input[type=email],
-    textarea {
+    input[type=email] {
+      width: 50%;
+      padding: .2rem 0;
+      font-family: inherit;
       font-size: 1.6rem;
       border-top: 1px solid #ccc;
       border-left: 1px solid #ccc;
@@ -63,16 +68,23 @@
       border-bottom: 1px solid #eee;
     }
 
-    input[type=text],
-    input[type=email] {
-      width: 50%;
-      line-height: 1.6rem;
+
+    select {
+      font-size: 1.6rem;
+      padding: 0  0 .5rem 0;
     }
 
     textarea {
       width: 100%;
       height: 8rem;
+      font-family: inherit;
+      font-size: 1.6rem;
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #eee;
+      border-bottom: 1px solid #eee;
     }
+
 
 
     input[type=text]:focus,
@@ -82,9 +94,6 @@
       border-color: pink;
     }
 
-    form > div >  div > select{
-      font-size: 1.6rem;
-    }
 
     input[type=submit] {
       padding: 0.1rem 0.4rem;
@@ -101,16 +110,24 @@
     @media (max-width: 600px) {
       form > div > label,
       legend {
+        display: block;  /* without this, the below margin bottom will not work */
         float: none;
         width: 100%;
+        font-weight: bold;
+        margin-bottom: .3rem;
       }
+
+
 
       form > div > div,
       form > div > fieldset > div {
         float: none;
+        width: 100%;
+        padding-left: 1px;
       }
 
     }
+    
   </style>
 </head>
 <body>
@@ -118,20 +135,21 @@
   <form action="#" method="POST">
 
     <header>
-      <h2>Example Responsive Form</h2>
-      <p>This form breaks at 600px and goes from a left-label form to a top-label form. At above 1200px, the labels align right.</p>
+      <h2>响应式表格示例</h2>
+      <p>窗口较宽时左右排列，窗口较窄时上下排列，窗口特别宽时 label 会靠右显示。</p>
     </header>
 
+
     <div>
-      <label for="fullName">Full Name</label>
+      <label for="fullName">姓 名</label>
 
       <div>
-        <input id="fullName" name="fullName" type="text">
+        <input id="fullName" name="fullName" type="text" placeholder="请输入你的姓名">
       </div>
     </div>
 
     <div>
-      <label for="email">Email</label>
+      <label for="email">邮 箱</label>
 
       <div>
         <input id="email" name="email" type="email">
@@ -139,7 +157,7 @@
     </div>
 
     <div>
-      <label for="message">Message</label>
+      <label for="message">留 言</label>
 
       <div>
         <textarea id="message" name="message"></textarea>
@@ -148,22 +166,22 @@
 
     <div>
       <fieldset>
-        <legend>Select a Choice</legend>
+        <legend>请选择一项</legend>
 
         <div>
           <div>
             <input type="radio" id="single_1" name="singleChoice">
-            <label for="single_1">First Choice</label>
+            <label for="single_1">第一个选项</label>
           </div>
   
           <div>
             <input type="radio" id="single_2" name="singleChoice">
-            <label for="single_2">Second Choice</label>
+            <label for="single_2">第二个选项</label>
           </div>
   
           <div>
             <input type="radio" id="single_3" name="singleChoice">
-            <label for="single_3">Third Choice</label>
+            <label for="single_3">第三个选项</label>
           </div>
         </div>
 
@@ -172,22 +190,22 @@
 
     <div>
       <fieldset>
-        <legend>Check All That Apply</legend>
+        <legend>请选择多项</legend>
 
         <div>
           <div>
             <input type="checkbox" id="multiple_1" name="multiple_1">
-            <label for="multiple_1">First Choice</label>
+            <label for="multiple_1">第一个选项</label>
           </div>
   
           <div>
             <input type="checkbox" id="multiple_2" name="multiple_2">
-            <label for="multiple_2">Second Choice</label>
+            <label for="multiple_2">第二个选项</label>
           </div>
   
           <div>
             <input type="checkbox" id="multiple_3" name="multiple_3">
-            <label for="multiple_3">Third Choice</label>
+            <label for="multiple_3">第三个选项</label>
           </div>
         </div>
 
@@ -195,21 +213,21 @@
     </div>
 
     <div>
-      <label for="selectlist_1">Select a Choice</label>
+      <label for="selectlist_1">单选条</label>
 
       <div>
         <select id="selectlist_1">
-          <option value="">--Please choose an option--</option>
-          <option value="First Choice">First Choice</option>
-          <option value="Second Choice">Second Choice</option>
-          <option value="Third Choice">Third Choice</option>
+          <option value="">--请选择一项--</option>
+          <option value="First Choice">第一项</option>
+          <option value="Second Choice">第二项</option>
+          <option value="Third Choice">第三项</option>
         </select>
       </div>
     </div>
 
     <div>
       <div>
-        <input type="submit" value="submit">
+        <input type="submit" value="提交">
       </div>
     </div>
   
