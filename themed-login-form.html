@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    :root {
+      /* theme color */
+      --color-background: #EDF4ED;
+      --color-highlight-inactive: #97D8A1;
+      --color-highlight-active: #41AC52;
+
+      --color-general-inactive: #9b9b9b;
+      --color-general-active: #000000;
+
+      --color-border-inactive: #e4e6e5;
+      --color-border-active: #000000;
+
+      --color-blank: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      font-size: 62.5%;
+      line-height: 1.15;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      font-size: 1.6rem;
+      color: var(--color-general-active);
+    }
+    a {
+      text-decoration: none;
+      color: var(--color-highlight-active);
+    }
+
+    .theme_controller {
+      width: 300px;
+      margin: 15px auto;
+      text-align: center;
+    }
+    .theme_controller > div {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid white;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+    .theme_controller .lightmode_green {
+      background: linear-gradient(45deg, #EDF4ED, #41AC52);
+    }
+    .theme_controller .lightmode_blue {
+      background: linear-gradient(45deg, #E5F4FC, #049FF2);
+    }
+    .theme_controller .lightmode_pink {
+      background: linear-gradient(45deg, #F7EAEF, #FF6394);
+    }
+    .theme_controller .darkmode_green {
+      background: linear-gradient(45deg, #000000, #41AC52);
+    }
+    .theme_controller .darkmode_blue {
+      background: linear-gradient(45deg, #000000, #049FF2);
+    }
+    .theme_controller .darkmode_pink {
+      background: linear-gradient(45deg, #000000, #FF6394);
+    }
+    .theme_controller .colorful_one {
+      background: linear-gradient(45deg, #022c43, #ffd700);
+    }
+    .theme_controller .colorful_two {
+      background: linear-gradient(45deg, #f4f9f4, #5c8d89);
+    }
+    .theme_controller .colorful_three {
+      background: linear-gradient(45deg, #86506d, #001700);
+    }
+    .theme_controller .colorful_four {
+      background: linear-gradient(45deg, #e9f679, #346473);
+    }
+
+    .login_wrapper {
+      text-align: center;
+      padding: 10px;
+      width: 300px;
+      margin: 0 auto;
+      background-color:  var(--color-background);
+      border-radius: 5px;
+      font-size: 1.4rem;
+    }
+    .login_wrapper > div {
+      margin-bottom: 15px;
+    }
+    .login_tab{
+      display: flex;
+      font-size: 1.4rem;
+    }
+    .login_tab > div{
+      flex: 1 1 50%;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border-inactive);
+      cursor: pointer;
+    }
+    .login_tab .sms_login_signUp {
+      border-bottom: 1px solid var(--color-border-active);
+    }
+    .login_tab .passwprd_login {
+      color: var(--color-general-inactive)
+    }
+
+
+    .login_form > div {
+      margin-bottom: 15px;
+    }
+    .login_form .login_declaration {
+      text-align: left;
+      font-size: 1.2rem;
+      color: var(--color-general-inactive);
+    }
+    .login_form .field {
+      position: relative;
+      text-align: left;
+      font-size: 1.4rem;
+      
+    }
+    .login_form > div > input {
+      font-size: inherit;
+      width: 100%;
+      padding: 8px 0;
+      border: 1px solid var(--color-border-inactive);
+      background-color: var(--color-blank);
+      color: var(--color-general-active);
+      border-radius: 3px;
+      outline: 0;
+    }
+    .login_form .phone_field > input {
+      padding-left: 65px;
+    }
+    .login_form .verificationCode_field > input {
+      padding-left: 8px;
+    }
+    .login_form .areaCode {
+      position: absolute;
+      width: 45px;
+      margin: 9px;
+      border-right: 1px solid var(--color-border-inactive);
+      color: var(--color-highlight-active);
+      cursor: pointer;
+    }
+    .login_form .get_verificationCode {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 8px;
+      cursor: pointer;
+      color: var(--color-highlight-active);
+    }
+    .login_form .btn {
+      font-size: 1.6rem;
+      display: block;
+      padding: 8px 0;
+      color: var(--color-blank);
+      border-radius: 3px;
+      background-color: var(--color-highlight-inactive);
+      cursor: pointer;
+    }
+    .login_form .btn:hover {
+      background-color: var(--color-highlight-active);
+    }
+
+
+
+    .login_foot {
+      display: flex;
+    }
+    .login_foot > div {
+      flex: 1 1 50%;
+    }
+    .login_foot .login_remember {
+      text-align: left;
+    }
+    .login_foot .No_verificationCode {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="theme_controller">
+    <div class="lightmode_green" data-theme="lightmode_green"></div>
+    <div class="lightmode_blue" data-theme="lightmode_blue"></div>
+    <div class="lightmode_pink" data-theme="lightmode_pink"></div>
+    <div class="darkmode_green" data-theme="darkmode_green"></div>
+    <div class="darkmode_blue" data-theme="darkmode_blue"></div>
+    <div class="darkmode_pink" data-theme="darkmode_pink"></div>
+    <div class="colorful_one" data-theme="colorful_one"></div>
+    <div class="colorful_two" data-theme="colorful_two"></div>
+    <div class="colorful_three" data-theme="colorful_three"></div>
+    <div class="colorful_four" data-theme="colorful_four"></div>
+  </div>
+
+  <div class = "login_wrapper">
+
+    <div class="login_tab">
+      <div class="sms_login_signUp">短信登录/注册</div>
+      <div class="passwprd_login">密码登录</div>
+    </div>
+
+
+    <div class="login_form">
+      <div class="login_declaration">登录注册表示同意<a href="#">豆瓣使用协议、隐私政策</a></div>
+
+      <div class="field phone_field">
+        <span class="areaCode">+86</span>
+        <input type="text" name="phoneNumber" placeholder="手机号">
+      </div>
+
+      <div class="field verificationCode_field">
+        <input type="text" name="verificationCode" placeholder="验证码" maxlength="6">
+        <span class="get_verificationCode">获取验证码</span>
+      </div>
+
+      <a class="btn">登录豆瓣</a>
+    </div>
+
+
+    <div class="login_foot">
+      <div class="login_remember">
+        <input type="checkbox" name="login_remember" id="login_remember">
+        <label for="login_remember">下次自动登录</label>
+      </div>
+      
+      <div class="No_verificationCode">
+        <a href="#">收不到验证码</a>
+      </div>
+    </div>
+
+
+    
+
+  </div>
+  <script>
+    const theme = {
+      lightmode_green: {
+        name: "lightmode_green",
+        background: "#EDF4ED",
+        highlight_inactive: "#97D8A1",
+        highlight_active: "#41AC52",
+        general_inactive: "#9b9b9b",
+        general_active: "#000000",
+        border_inactive: "#e4e6e5",
+        border_active: "#000000",
+        blank: "#fff"
+      },
+
+      lightmode_blue: {
+        name: "lightmode_blue",
+        background: "#E5F4FC",
+        highlight_inactive: "#49B8F4",
+        highlight_active: "#049FF2",
+        general_inactive: "#9b9b9b",
+        general_active: "#000000",
+        border_inactive: "#e4e6e5",
+        border_active: "#000000",
+        blank: "#fff"
+      },
+
+      lightmode_pink: {
+        name: "lightmode_pink",
+        background: "#F7EAEF",
+        highlight_inactive: "#F7A5C2",
+        highlight_active: "#FF6394",
+        general_inactive: "#9b9b9b",
+        general_active: "#000000",
+        border_inactive: "#e4e6e5",
+        border_active: "#000000",
+        blank: "#fff"
+      },
+
+      darkmode_green: {
+        name: "darkmode_green",
+        background: "#000000",
+        highlight_inactive: "#41AC52",
+        highlight_active: "#52D868",
+        general_inactive: "#878080",
+        general_active: "#efecec",
+        border_inactive: "#878080",
+        border_active: "#efecec",
+        blank: "#000000"
+      },
+
+      darkmode_blue: {
+        name: "darkmode_blue",
+        background: "#000000",
+        highlight_inactive: "#049FF2",
+        highlight_active: "#47BEFF",
+        general_inactive: "#878080",
+        general_active: "#efecec",
+        border_inactive: "#878080",
+        border_active: "#efecec",
+        blank: "#000000"
+      },
+
+      darkmode_pink: {
+        name: "darkmode_pink",
+        background: "#000000",
+        highlight_inactive: "#FF6394",
+        highlight_active: "#FF7FA7",
+        general_inactive: "#878080",
+        general_active: "#efecec",
+        border_inactive: "#878080",
+        border_active: "#efecec",
+        blank: "#000000"
+      },
+
+      colorful_one: {
+        name: "colorful_one",
+        background: "#022c43",
+        highlight_inactive: "#ffd700",
+        highlight_active: "#ffd700",
+        general_inactive: "#176D9B",
+        general_active: "#ffd700",
+        border_inactive: "#176D9B",
+        border_active: "#ffd700",
+        blank: "#022c43"
+      },
+
+      colorful_two: {
+        name: "colorful_two",
+        background: "#f4f9f4",
+        highlight_inactive: "#5c8d89",
+        highlight_active: "#5c8d89",
+        general_inactive: "#ADABAB",
+        general_active: "#5c8d89",
+        border_inactive: "#ADABAB",
+        border_active: "#5c8d89",
+        blank: "#f4f9f4"
+      },
+
+      colorful_three: {
+        name: "colorful_three",
+        background: "#001700",
+        highlight_inactive: "#86506D",
+        highlight_active: "#AD688D",
+        general_inactive: "#757474",
+        general_active: "#AD688D",
+        border_inactive: "#757474",
+        border_active: "#AD688D",
+        blank: "#001700"
+      },
+
+      colorful_four: {
+        name: "colorful_four",
+        background: "#e9f679",
+        highlight_inactive: "#346473",
+        highlight_active: "#346473",
+        general_inactive: "#A4AF3F",
+        general_active: "#346473",
+        border_inactive: "#A4AF3F",
+        border_active: "#346473",
+        blank: "#e9f679"
+      },
+
+
+
+    }
+    const themeBtns = document.querySelectorAll('.theme_controller div');
+
+    themeBtns.forEach((btn) => {
+      btn.addEventListener('click', changeTheme);
+    })
+
+    function changeTheme(e) {
+      for (let color in theme) {
+        if (theme[color].name === e.target.dataset.theme) {
+          document.documentElement.style.setProperty('--color-background', theme[color].background);
+          document.documentElement.style.setProperty('--color-highlight-inactive', theme[color].highlight_inactive);
+          document.documentElement.style.setProperty('--color-highlight-active', theme[color].highlight_active);
+          document.documentElement.style.setProperty('--color-general-inactive', theme[color].general_inactive);
+          document.documentElement.style.setProperty('--color-general-active', theme[color].general_active);
+          document.documentElement.style.setProperty('--color-border-inactive', theme[color].border_inactive);
+          document.documentElement.style.setProperty('--color-border-active', theme[color].border_active);
+          document.documentElement.style.setProperty('--color-blank', theme[color].blank);
+        }
+      }
+    }
+    //console.log(btn_themeBlue);
+
+  </script>
+</body>
+</html>
